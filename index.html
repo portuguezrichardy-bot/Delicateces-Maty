@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Delicateces Maty | Repostería Artesanal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SEO BÁSICO -->
+<meta name="description" content="Delicateces Maty - Repostería artesanal premium. Tortas, cupcakes y postres personalizados para eventos y celebraciones. Pedidos por WhatsApp.">
+<meta name="keywords" content="tortas artesanales, cupcakes personalizados, repostería, pastelería, pedidos por WhatsApp, Delicateces Maty">
+<meta name="author" content="Delicateces Maty">
+
+<!-- REDES SOCIALES / OPEN GRAPH -->
+<meta property="og:title" content="Delicateces Maty | Repostería Artesanal">
+<meta property="og:description" content="Tortas y dulces personalizados hechos con amor. Haz tu pedido por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.jpeg">
+
+<!-- FAVICON -->
+<link rel="icon" href="logo.jpeg" type="image/jpeg">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --rosa: #ff6b9d;
+  --rosa-soft: #fff0f6;
+  --verde: #25d366;
+  --oscuro: #222;
+  --sombra: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--rosa-soft);
+  color: var(--oscuro);
+}
+
+/* --- HEADER --- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: linear-gradient(135deg, #ff6b9d, #ff9a8b);
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--sombra);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+}
+
+.logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  padding: 5px;
+  object-fit: cover;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a:hover { color: #fff; }
+
+/* --- HERO (CORREGIDO) --- */
+.hero {
+  min-height: 70vh; /* Ajustado para que no sea excesivo */
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url("foto fondo.jpeg");
+  background-size: cover;
+  background-position: center 5%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 25%;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 650px;
+  margin: auto;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 40px;
+  background: var(--rosa);
+  color: white;
+  text-decoration: none;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+/* --- SECCIONES Y CATALOGO --- */
+section {
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: var(--rosa);
+  margin-bottom: 50px;
+}
+
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+}
+
+.producto {
+  background: white;
+  border-radius: 25px;
+  box-shadow: var(--sombra);
+  overflow: hidden;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.producto:hover {
+  transform: translateY(-10px);
+}
+
+/* AJUSTE DE IMAGEN DE CATALOGO */
+.producto img {
+  width: 100%;
+  height: 250px; 
+  object-fit: cover; /* Mantiene la proporción de la torta */
+  display: block;
+}
+
+.producto h3 {
+  margin: 15px 10px;
+  color: var(--rosa);
+}
+
+.btn-pedir {
+  display: inline-block;
+  margin: 15px 0 25px;
+  padding: 12px 30px;
+  background: var(--verde);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- MODALES Y CONTACTO --- */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content input, .modal-content textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 30px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+}
+
+.whatsapp {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--verde);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--sombra);
+  z-index: 1000;
+}
+
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  nav { display: none; }
+  section { padding: 40px 20px; }
+}
+</style>
+
+<!--
+ESTRUCTURA DE CARPETAS RECOMENDADA PARA PUBLICAR:
+/
+|-- index.html
+|-- logo.jpeg
+|-- assets/
+|   |-- images/
+|   |-- css/   (si luego separas estilos)
+|   |-- js/    (si luego separas scripts)
+|-- robots.txt
+|-- sitemap.xml
+
+Puedes crear robots.txt con:
+User-agent: *
+Allow: /
+
+Y sitemap.xml para Google Search Console
+-->
+
+
+<header>
+  <div class="logo">
+    <img src="logo.jpeg" alt="Logo">
+    Delicateces Maty
+  </div>
+  <nav>
+    <a href="#panel" onclick="return mostrarLogin()">Admin</a>
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+ 
+<section class="hero" id="inicio">
+  <div>
+    <h1>Tortas que enamoran a primera vista</h1>
+    <p>Repostería artesanal hecha con amor, calidad premium y diseños únicos para momentos inolvidables.</p>
+    <a class="btn" href="#contacto">Haz tu pedido ahora</a>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="section-title">
+    <h2>Sobre Nosotros</h2>
+  </div>
+  <div class="about">
+    <p>
+      <strong>DULCES MATY</strong> transforma la pasión por la repostería en experiencias dulces que conquistan corazones.<br><br>
+      Cada pastel es elaborado artesanalmente con ingredientes seleccionados y una presentación elegante.
+      Nos especializamos en tortas personalizadas para cumpleaños, eventos y celebraciones especiales.
+      <br><br>
+      🍰 <strong>Hecho con amor, pensado para ti.</strong>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>¿Por qué elegir Delicateces Maty?</h2>
+  </div>
+
+  <div class="catalogo">
+    <div class="producto">
+      <h3>🎂 100% Artesanal</h3>
+      <p>Hecho a mano con ingredientes frescos y recetas exclusivas</p>
+    </div>
+
+    <div class="producto">
+      <h3>⏰ Entrega Puntual</h3>
+      <p>Tu pedido listo en la fecha exacta que lo necesitas</p>
+    </div>
+
+    <div class="producto">
+      <h3>⭐ Clientes Felices</h3>
+      <p>Más de 100 pedidos entregados con satisfacción garantizada</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- CATALOGO REAL -->
+<section id="catalogo">
+  <div class="section-title">
+    <h2>Catálogo de Dulces</h2>
+  </div>
+
+  <div class="catalogo">
+
+    
+    <div class="producto">
+    <img src="pasta seca.jpg" alt="Torta"> <h3>Galleta Pasta Seca</h3>
+    <p>Opcional: Descripción o precio</p>
+    <a class="btn-pedir" onclick="openForm('Galleta Pasta Seca')">Pedir por WhatsApp</a>
+</div>
+
+    <div class="producto">
+    <img src="torta quesillo.jpeg" alt="Torta"> <h3>Tortas Chocoquesillo</h3>
+    <p>Opcional: Descripción o precio</p>
+    <a class="btn-pedir" onclick="openForm('Tortas Chocoquesillo')">Pedir por WhatsApp</a>
+</div>
+
+    <div class="producto">
+      <img src="torta artesanal.jpg" alt=""> <h3>Tortas Artesanales</h3>  
+       <p>Opcional: Descripción o precio</p>
+      <a class="btn-pedir" onclick="openForm('Tortas Artesanales')">Pedir por WhatsApp</a>
+    </div>
+
+    <div class="producto">
+      <img src="torta chocolate.jpg" alt=""><h3>Tortas Chocolate</h3>
+          <p>Opcional: Descripción o precio</p>
+      <a class="btn-pedir" onclick="openForm('Toras Chocolate')">Pedir por WhatsApp</a>
+    </div>
+
+    <div class="producto">
+      <div><img src="tres leche.jpeg" alt=""></div>
+       <p>Opcional: Descripción o precio</p>
+      <a class="btn-pedir" onclick="openForm('Tortas tres Leches')">Pedir por WhatsApp</a>
+    </div>
+
+    <div class="producto">
+      <img src="torta tres leches de chocolate.png" alt=""><h3>Tortas Tres Leches de Chocolate</h3>
+       <p>Opcional: Descripción o precio</p>
+      <a class="btn-pedir" onclick="openForm('Tortas Tres Leches de Chocolate ')">Pedir por WhatsApp</a>
+    </div>
+
+    <div class="producto">
+      <img src="torta de vainilla.jpg" alt=""><h3>Tortas Vainilla</h3>
+       <p>Opcional: Descripción o precio</p>
+      <a class="btn-pedir" onclick="openForm('Tortas Vainilla')">Pedir por WhatsApp</a>
+    </div>
+
+    <div class="producto">
+      <img src="TORTA MARMOLEADA.png" alt=""> <h3>Torta Marmoleada</h3>
+       <p>Opcional: Descripción o precio</p>
+      <a class="btn-pedir" onclick="openForm('Tortas Marmoleada ')">Pedir por WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<section style="background:white;border-radius:40px;padding:70px;box-shadow:0 20px 40px rgba(0,0,0,0.15);">
+  <div class="section-title">
+    <h2>Lo que dicen nuestros clientes</h2>
+  </div>
+
+  <div class="catalogo">
+    <div class="producto">
+      <p style="font-size:1.5rem;">⭐⭐⭐⭐⭐</p>
+      <p>“La mejor torta que he probado, hermosa y deliciosa. 100% recomendada.”</p>
+      <strong>- María G.</strong>
+    </div>
+
+    <div class="producto">
+      <p style="font-size:1.5rem;">⭐⭐⭐⭐⭐</p>
+      <p>“Entrega puntual y atención increíble. Volveré a pedir sin duda.”</p>
+      <strong>- Carlos R.</strong>
+    </div>
+
+    <div class="producto">
+      <p style="font-size:1.5rem;">⭐⭐⭐⭐⭐</p>
+      <p>“Todos en la fiesta preguntaron dónde la compré. Maty es increíble.”</p>
+      <strong>- Ana L.</strong>
+    </div>
+
+  <div class="producto especial">
+    <h3>¿Quieres algo diferente?</h3>
+    <p>Cuéntanos tu idea y la horneamos para ti (Sabores, colores o diseños especiales).</p>
+    <a class="btn-pedir" style="background: var(--oscuro);" onclick="openForm('Personalizada')">Personalizar mi Torta</a>
+</div>
+  </div>
+</section>
+
+<!-- PAGOS Y ESTADO DE PEDIDO -->
+<section id="pagos">
+  <div class="section-title">
+    <h2>💳 Pagos y Estado del Pedido</h2>
+  </div>
+
+  <div class="catalogo">
+    <div class="producto">
+      <h3>🏦 Transferencias Bancarias</h3>
+      <p>Realiza tu pago por transferencia o depósito bancario</p>
+      <button class="btn-pedir" onclick="mostrarTransferencias()">Ver datos bancarios</button>
+      <p id="transferenciasInfo" style="display:none;font-size:14px;margin:15px;">
+        Banco: <strong>Tu Banco de Venezuela</strong><br>
+        Cuenta: <strong>01020476380000005681</strong><br>
+        Titular: <strong>Matilde Yamile Portuguez  Alvarez</strong>
+      </p>
+    </div>
+
+    <div class="producto">
+      <h3>📱 Pago Móvil</h3>
+      <p>Paga desde tu banco usando Pago Móvil</p>
+      <button class="btn-pedir" onclick="mostrarPagoMovil()">Ver datos Pago Móvil</button>
+      <p id="pagoMovilInfo" style="display:none;font-size:14px;margin:15px;">
+        Teléfono: <strong>+58412-868-9638</strong><br>
+        Banco: <strong>Tu Banco Venezuela</strong><br>
+        Documento: <strong>10.927.566</strong>
+      </p>
+    </div>
+
+    <div class="producto">
+      <h3>₿ Binance</h3>
+      <p>Paga con criptomonedas mediante Binance Pay</p>
+      <a class="btn-pedir" href="https://www.binance.com" target="_blank">Pagar con Binance</a>
+    </div>
+
+    <div class="producto">
+      <h3>📦 Estado del Pedido</h3>
+      <p>Consulta el estado de tu pedido ingresando tu nombre</p>
+      <input type="text" id="consultaNombre" placeholder="Tu nombre">
+      <button class="btn-pedir" onclick="consultarEstado()">Consultar</button>
+      <p id="estadoResultado" style="font-size:14px;margin-top:15px;"></p>
+    </div>
+  </div>
+</section>
+
+<!-- PANEL ADMIN SIMPLE (SOLO DUEÑO) -->
+<section id="loginAdmin" class="modal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="cerrarLogin()">❌</div>
+    <h2>🔒 Acceso Administrador</h2>
+    <input type="password" id="adminPass" placeholder="Contraseña">
+    <button onclick="verificarAdmin()">Entrar</button>
+  </div>
+</section>
+
+<!-- PANEL ADMIN SIMPLE -->
+<section id="panel" style="display:none;background:white;border-radius:40px;padding:60px;box-shadow:0 20px 40px rgba(0,0,0,0.15);" style="background:white;border-radius:40px;padding:60px;box-shadow:0 20px 40px rgba(0,0,0,0.15);">
+  <div class="section-title">
+    <h2>📊 Panel de Pedidos (Admin)</h2>
+  </div>
+
+  <div style="max-width:600px;margin:auto;">
+    <input type="text" id="adminNombre" placeholder="Nombre del cliente" style="width:100%;padding:12px;margin-bottom:10px;border-radius:15px;border:1px solid #ddd;">
+    <select id="adminEstado" style="width:100%;padding:12px;margin-bottom:10px;border-radius:15px;border:1px solid #ddd;">
+      <option value="En preparación">En preparación</option>
+      <option value="Listo">Listo</option>
+      <option value="Entregado">Entregado</option>
+    </select>
+    <button class="btn-pedir" onclick="guardarEstado()">Guardar Estado</button>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="section-title">
+    <h2>Contacto</h2>
+  </div>
+  <div class="contact">
+    <p>📱 WhatsApp: +58412-868-9638</p>
+    <p>📧 Correo: Matildep798@gmail.com</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 DELICATECES MATY | REPOSTERÍA ARTESANAL</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/58412-868-9638" target="_blank">
+  💬 WhatsApp
+</a>
+
+<!-- MODAL FORMULARIO PEDIDO -->
+<div class="modal" id="pedidoModal">
+  <div class="modal-content">
+    <div class="close-modal" onclick="closeForm()">❌</div>
+    <h2>📋 Completa tu pedido</h2>
+    <input type="text" id="nombre" placeholder="Tu nombre" required>
+    <input type="text" id="producto" placeholder="Producto" readonly>
+    <input type="date" id="fecha" required>
+    <input type="text" id="direccion" placeholder="Dirección de entrega" required>
+    <textarea id="mensaje" placeholder="Mensaje adicional (opcional)"></textarea>
+    <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
+  </div>
+</div>
+
+<script>
+function openForm(producto) {
+  document.getElementById('producto').value = producto;
+  document.getElementById('pedidoModal').style.display = 'flex';
+}
+
+function closeForm() {
+  document.getElementById('pedidoModal').style.display = 'none';
+}
+
+function openForm(producto) {
+  const inputProducto = document.getElementById('producto');
+  
+  if(producto === 'Personalizada') {
+    inputProducto.value = ""; // Limpia el campo para que el cliente escriba
+    inputProducto.readOnly = false; // Permite escribir
+    inputProducto.placeholder = "¿Cómo sueñas tu torta?";
+  } else {
+    inputProducto.value = producto; // Pone el nombre de la torta del catálogo
+    inputProducto.readOnly = true; // Bloquea el campo
+  }
+  
+  document.getElementById('pedidoModal').style.display = 'flex';
+}
+
+function enviarWhatsApp() {
+  const nombre = document.getElementById('nombre').value.trim();
+  const producto = document.getElementById('producto').value.trim();
+  const fecha = document.getElementById('fecha').value;
+  const direccion = document.getElementById('direccion').value.trim();
+  const mensajeExtra = document.getElementById('mensaje').value.trim();
+
+  if (!nombre || !producto || !fecha || !direccion) {
+    alert('Por favor completa todos los campos obligatorios');
+    return;
+  }
+
+  const texto = `Hola, soy ${nombre}. Quiero pedir: ${producto}. Fecha de entrega: ${fecha}. Dirección: ${direccion}. Mensaje: ${mensajeExtra || 'N/A'}`;
+  const telefono = '58412-868-9638';
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(texto)}`;
+
+  window.open(url, '_blank');
+  closeForm();
+}
+
+
+// SIMULACION DE BASE DE DATOS LOCAL
+const pedidos = {};
+
+function guardarEstado() {
+  const nombre = document.getElementById('adminNombre').value.trim();
+  const estado = document.getElementById('adminEstado').value;
+
+  if (!nombre) {
+    alert('Ingresa el nombre del cliente');
+    return;
+  }
+
+  pedidos[nombre.toLowerCase()] = estado;
+  alert(`Estado guardado: ${nombre} -> ${estado}`);
+
+  document.getElementById('adminNombre').value = '';
+}
+
+function consultarEstado() {
+  const nombre = document.getElementById('consultaNombre').value.trim().toLowerCase();
+  const resultado = document.getElementById('estadoResultado');
+
+  if (!nombre) {
+    resultado.textContent = 'Ingresa tu nombre para consultar.';
+    return;
+  }
+
+  if (pedidos[nombre]) {
+    resultado.textContent = `Estado de tu pedido: ${pedidos[nombre]}`;
+  } else {
+    resultado.textContent = 'No se encontró pedido con ese nombre.';
+  }
+}
+
+function mostrarTransferencias() {
+  const info = document.getElementById('transferenciasInfo');
+  info.style.display = info.style.display === 'none' ? 'block' : 'none';
+}
+
+function mostrarPagoMovil() {
+  const info = document.getElementById('pagoMovilInfo');
+  info.style.display = info.style.display === 'none' ? 'block' : 'none';
+}
+
+
+
+// --- SEGURIDAD ADMIN ---
+const CLAVE_ADMIN = "maty123"; // 🔐 Cambia esta clave por la tuya
+
+function mostrarLogin() {
+  document.getElementById('loginAdmin').style.display = 'flex';
+  return false;
+}
+
+function cerrarLogin() {
+  document.getElementById('loginAdmin').style.display = 'none';
+}
+
+function verificarAdmin() {
+  const pass = document.getElementById('adminPass').value;
+  if (pass === CLAVE_ADMIN) {
+    document.getElementById('loginAdmin').style.display = 'none';
+    document.getElementById('panel').style.display = 'block';
+    window.location.hash = "#panel";
+  } else {
+    alert("Contraseña incorrecta");
+  }
+}
+
+</script>
+
+</body>
+</html>
