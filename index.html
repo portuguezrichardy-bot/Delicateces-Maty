@@ -236,8 +236,8 @@ section {
     Delicateces Maty
   </div>
   <nav>
-    <a href="#panel" onclick="return mostrarLogin()">Admin</a>
-    <a href="#inicio">Inicio</a>
+    <a href="#panel" onclick="return mostrarLogin()
+    <a href="#inicio">Inicio<a>
     <a href="#nosotros">Nosotros</a>
     <a href="#catalogo">Catálogo</a>
     <a href="#contacto">Contacto</a>
@@ -426,23 +426,7 @@ section {
       <p id="estadoResultado" style="font-size:14px;margin-top:15px;"></p>
     </div>
   </div>
-</section>
-
-<!-- PANEL ADMIN SIMPLE (SOLO DUEÑO) -->
-<section id="loginAdmin" class="modal">
-  <div class="modal-content">
-    <div class="close-modal" onclick="cerrarLogin()">❌</div>
-    <h2>🔒 Acceso Administrador</h2>
-    <input type="password" id="adminPass" placeholder="Contraseña">
-    <button onclick="verificarAdmin()">Entrar</button>
-  </div>
-</section>
-
-<!-- PANEL ADMIN SIMPLE -->
-<section id="panel" style="display:none;background:white;border-radius:40px;padding:60px;box-shadow:0 20px 40px rgba(0,0,0,0.15);" style="background:white;border-radius:40px;padding:60px;box-shadow:0 20px 40px rgba(0,0,0,0.15);">
-  <div class="section-title">
-    <h2>📊 Panel de Pedidos (Admin)</h2>
-  </div>
+</section>
 
   <div style="max-width:600px;margin:auto;">
     <input type="text" id="adminNombre" placeholder="Nombre del cliente" style="width:100%;padding:12px;margin-bottom:10px;border-radius:15px;border:1px solid #ddd;">
