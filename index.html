@@ -577,34 +577,11 @@ function mostrarPagoMovil() {
   const info = document.getElementById('pagoMovilInfo');
   info.style.display = info.style.display === 'none' ? 'block' : 'none';
 }
-
-
-
-// --- SEGURIDAD ADMIN ---
-const CLAVE_ADMIN = "maty123"; // 🔐 Cambia esta clave por la tuya
-
-function mostrarLogin() {
-  document.getElementById('loginAdmin').style.display = 'flex';
-  return false;
-}
-
-function cerrarLogin() {
-  document.getElementById('loginAdmin').style.display = 'none';
-}
-
-function verificarAdmin() {
-  const pass = document.getElementById('adminPass').value;
-  if (pass === CLAVE_ADMIN) {
-    document.getElementById('loginAdmin').style.display = 'none';
-    document.getElementById('panel').style.display = 'block';
-    window.location.hash = "#panel";
-  } else {
-    alert("Contraseña incorrecta");
-  }
 }
 </script>
 
 </body>
 </html>
+
 
 
