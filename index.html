@@ -426,7 +426,8 @@ section {
       <p id="estadoResultado" style="font-size:14px;margin-top:15px;"></p>
     </div>
   </div>
-</section>
+</section>
+
 
   <div style="max-width:600px;margin:auto;">
     <input type="text" id="adminNombre" placeholder="Nombre del cliente" style="width:100%;padding:12px;margin-bottom:10px;border-radius:15px;border:1px solid #ddd;">
@@ -434,8 +435,6 @@ section {
       <option value="En preparación">En preparación</option>
       <option value="Listo">Listo</option>
       <option value="Entregado">Entregado</option>
-    </select>
-    <button class="btn-pedir" onclick="guardarEstado()">Guardar Estado</button>
   </div>
 </section>
 
@@ -523,7 +522,6 @@ const pedidos = {};
 
 function guardarEstado() {
   const nombre = document.getElementById('adminNombre').value.trim();
-  const estado = document.getElementById('adminEstado').value;
 
   if (!nombre) {
     alert('Ingresa el nombre del cliente');
@@ -566,6 +564,7 @@ function mostrarPagoMovil() {
 
 </body>
 </html>
+
 
 
 
